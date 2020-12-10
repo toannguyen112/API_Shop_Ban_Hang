@@ -27,6 +27,12 @@ router.post('/order', auth_costomer, async (req, res) => {
     }
 })
 
+// get order costomer 
+router.get('/order/costomer', async (req, res) => {
+    const listOrderCostomer = await Order.find({ _id: req.costomer._id });
+    res.status(200).send(listOrderCostomer);
+})
+
 // get all list order
 router.get('/order', auth_admin, async (req, res) => {
     const orderList = await Order.find({});
@@ -50,6 +56,8 @@ router.delete('/order/:id', auth_admin, async (req, res) => {
         res.status(500).send();
     }
 });
+
+// update active 
 
 router.put("/order/:id", auth_admin, async (req, res) => {
     const activeOrder = req.body.active;
