@@ -29,7 +29,7 @@ router.post("/order", auth_costomer, async (req, res) => {
 
 // get order costomer
 router.get("/order/costomer", auth_costomer, async (req, res) => {
-    const listOrderCostomer = await Order.find(req.costomer._id).exec();
+    const listOrderCostomer = await Order.find({});
     res.status(200).send(listOrderCostomer);
 });
 
