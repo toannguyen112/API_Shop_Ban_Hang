@@ -28,7 +28,7 @@ router.post('/order', auth_costomer, async (req, res) => {
 })
 
 // get order costomer 
-router.get('/order/costomer', async (req, res) => {
+router.get('/order/costomer', auth_costomer, async (req, res) => {
     const listOrderCostomer = await Order.find({ _id: req.costomer._id });
     res.status(200).send(listOrderCostomer);
 })
