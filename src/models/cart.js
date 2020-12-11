@@ -26,7 +26,9 @@ const cartShema = new mongoose.Schema(
     {
         timestamps: true,
     },
-
+    {
+        _id: false,
+    }
 );
 
 cartShema.methods.increaseAmountProduct = async function () {
