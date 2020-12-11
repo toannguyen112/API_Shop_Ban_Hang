@@ -29,6 +29,15 @@ router.post('/cart/addtocart', auth_costomer, async (req, res) => {
 
 });
 
+router.get("/cart/costomer", auth_costomer, async (req, res) => {
+    try {
+        const listCartCostomer = await Cart.find({ owner: req.costomer._id });
+        res.status(200).send(listCartCostomer);
+    } catch (error) {
+        res.status(400).send();
+    }
+})
+
 // get all cart list 
 router.get("/cart", auth_costomer, async (req, res) => {
     const cart = await Cart.find({});
