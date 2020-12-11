@@ -1,33 +1,33 @@
-const mongoose = require('mongoose');
-const cartShema = new mongoose.Schema({
+const mongoose = require("mongoose");
+const cartShema = new mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        product_image: {
+            type: String,
+            require: true,
+        },
+        price: {
+            type: String,
+            required: true,
+        },
+        description: {
+            type: String,
+            required: true,
+        },
+        amount: {
+            type: Number,
+            required: true,
+        },
+        owner: mongoose.Schema.Types.ObjectId,
+    },
+    {
+        timestamps: true,
+    },
 
-
-    name: {
-        type: String,
-        required: true
-    },
-    product_image: {
-        type: String,
-        require: true
-    },
-    price: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String, required: true
-    },
-    amount: {
-        type: Number,
-        required: true
-    },
-    owner: mongoose.Schema.Types.ObjectId
-
-}, {
-    timestamps: true
-}, {
-    _id: false
-});
+);
 
 cartShema.methods.increaseAmountProduct = async function () {
     const cart = this;
@@ -36,5 +36,5 @@ cartShema.methods.increaseAmountProduct = async function () {
     return cart;
 };
 
-const Cart = mongoose.model('Cart', cartShema);
+const Cart = mongoose.model("Cart", cartShema);
 module.exports = Cart;
