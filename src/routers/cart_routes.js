@@ -29,6 +29,8 @@ router.post('/cart/addtocart', auth_costomer, async (req, res) => {
 
 });
 
+
+// get cart costomer 
 router.get("/cart/costomer", auth_costomer, async (req, res) => {
     try {
         const listCartCostomer = await Cart.find({ owner: req.costomer._id });
