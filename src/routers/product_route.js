@@ -13,7 +13,31 @@ router.get("/products", async (req, res) => {
     res.status(200).send(products);
 });
 
-// create new  products
+// get list products iphone
+router.get("/products/iphone", async (req, res) => {
+    const productsIphone = await Product.find({ categories: "IPhone" }).select(
+        "image name price hidden categories description status"
+    );
+    res.status(200).send(productsIphone);
+});
+// get list products macbook
+
+router.get("/products/macbook", async (req, res) => {
+    const productMacbook = await Product.find({ categories: "Macbook" }).select(
+        "image name price hidden categories description status"
+    );
+    res.status(200).send(productMacbook);
+});
+
+// get list products ipad
+
+router.get("/products/ipad", async (req, res) => {
+    const productIpad = await Product.find({ categories: "IPad" }).select(
+        "image name price hidden categories description status"
+    );
+    res.status(200).send(productIpad);
+});
+// add new  products
 router.post("/products", auth_admin, async (req, res) => {
     const product = new Product({ ...req.body, creator: req.admin._id });
     await product.save();

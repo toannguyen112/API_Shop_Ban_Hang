@@ -10,7 +10,9 @@ const orderRouter = require('./src/routers/order_routes');
 const app = express();
 const port = process.env.PORT
 
-var cors = require('cors')
+var cors = require('cors');
+var multer = require('multer');
+var upload = multer();
 app.use(express.json());
 app.use(cors());
 app.use(adminRouter);

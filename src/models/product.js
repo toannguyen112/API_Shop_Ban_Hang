@@ -31,7 +31,7 @@ const productSchema = new mongoose.Schema({
     hidden: Boolean,
     discount: String,
     image: {
-        type: String,
+        type: Buffer,
         required: true
     },
     image_producst_detail: [{
