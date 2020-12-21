@@ -39,7 +39,7 @@ router.get("/products/ipad", async (req, res) => {
 });
 // add new  products
 router.post("/products", auth_admin, async (req, res) => {
-    const product = new Product({ ...req.body, creator: req.admin._id });
+    const product = new Product({ ...req.body, creator: req.admin._id, image: req.file.buffer });
     await product.save();
     res.status(200).send(product);
 });
